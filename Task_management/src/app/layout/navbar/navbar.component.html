@@ -21,7 +21,7 @@
             <a class="nav-link text-white" routerLink="/add_task">TASK</a>
           </li>
           <li class="nav-item" *ngIf="(authToken$ | async); else elsepart">
-            <a class="nav-link text-white" (click)="logout()">LOGOUT</a>
+            <a class="nav-link text-white" routerLink="/home" (click)="logout()">LOGOUT</a>
           </li>
           <ng-template #elsepart>
             <li class="nav-item">
