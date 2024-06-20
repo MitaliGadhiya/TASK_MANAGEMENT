@@ -1,0 +1,25 @@
+<!-- show-task.component.html -->
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <h1 class="mt-4">TASK</h1>
+    <div class="d-flex flex-wrap justify-content-start container">
+        <div *ngFor = "let task of task; let i = index" class="p-3" style="min-width: 350px; min-height: 350px; max-height: 350px; max-width: 350px;">
+            <div class="border rounded-5 p-3 mt-4">
+                <h4 class="text-uppercase">{{task.title}}</h4>
+                <h6 class="text-capitalize">{{task.description}}</h6>
+                <h6 class="text-capitalize">{{task.status}}</h6>
+                <div class="p-1 d-flex">  
+                    <div class="p-2">
+                        <button type="button" class="btn btn-success" (click) = "editTask(task)">EDIT</button>
+                    </div>  
+                    <div class="p-2">   
+                        <button type="button"  [ngClass]="isAdmin ? 'btn btn-danger' : 'hidden'" (click) = "deleteTask(task)">DELETE</button>
+                    </div>
+                </div>
+            </div>        
+       </div>
+    </div>
+   
+</div>
+
+  

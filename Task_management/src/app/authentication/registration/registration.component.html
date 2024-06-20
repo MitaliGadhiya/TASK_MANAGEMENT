@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <form [formGroup] = "userForm" (ngSubmit) = "handle()">
+        <h1>REGISTRATION</h1>
+        <div class="row">
+            <div class="col-lg-8 mt-5">
+                <div class="form-group">
+                    <label for="name">FirstName</label>
+                    <input type="text" class="form-control" id="fname" formControlName="fname" [class.is-invalid] = "user['fname'].invalid && user['fname'].touched">
+                </div>
+                <div *ngIf = "user['fname'].invalid && user['fname'].touched">
+                    <div *ngIf = "user['fname'].errors && user['fname'].errors['required']" class="text-danger">
+                        FirstName is required
+                    </div>
+                    <div *ngIf = "user['fname'].errors && user['fname'].errors['pattern']" class="text-danger">
+                        FirstName can only be characters
+                    </div>
+                </div>
+            </div>  
+            <div class="col-lg-8 mt-4">
+                <div class="form-group">
+                    <label for="name">LastName</label>
+                    <input type="text" class="form-control" id="lname" formControlName="lname" [class.is-invalid] = "user['lname'].invalid && user['lname'].touched">
+                </div>
+                <div *ngIf = "user['lname'].invalid && user['lname'].touched">
+                    <div *ngIf = "user['lname'].errors && user['lname'].errors['required']" class="text-danger">
+                        LastName is required
+                    </div>
+                    <div *ngIf = "user['lname'].errors && user['lname'].errors['pattern']" class="text-danger">
+                        LastName can only be characters
+                    </div>
+                </div>
+            </div> 
+            <div class="col-lg-8 mt-4">
+                <div class="form-group">
+                    <label for="name">Email-ID</label>
+                    <input type="email" class="form-control" id="email" formControlName="email" [class.is-invalid] = "user['email'].invalid && user['email'].touched">
+                </div>
+                <div *ngIf = "user['email'].invalid && user['email'].touched">
+                    <div *ngIf = "user['email'].errors && user['email'].errors['required']" class="text-danger">
+                        Email is required
+                    </div>
+                    <div *ngIf = "user['email'].errors && user['email'].errors['pattern']" class="text-danger">
+                        Invalid email ID
+                    </div>
+                </div>
+            </div> 
+            <div class="col-lg-8 mt-4">
+                <div class="form-group">
+                    <label for="name">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password" [class.is-invalid] = "user['password'].invalid && user['password'].touched">
+                </div>
+                <div *ngIf = "user['password'].invalid && user['password'].touched">
+                    <div *ngIf = "user['password'].errors && user['password'].errors['required']" class="text-danger">
+                        Password is required
+                    </div>
+                    <div *ngIf = "user['password'].errors && user['password'].errors['pattern']" class="text-danger">
+                        It must be one uppercase letter, one lowercase letter and one special character and total length 8
+                    </div>
+                    <div *ngIf = "user['password'].errors && user['password'].errors['minLength']" class="text-danger">
+                        It must be 8 character
+                    </div>
+                </div>
+            </div> 
+            <div class="col-lg-8 mt-4">
+                <div class="form-group">
+                    <label for="name">Mobile-NO</label>
+                    <input type="number" class="form-control" id="mobile" formControlName="mobile" [class.is-invalid] = "user['mobile'].invalid && user['mobile'].touched">
+                </div>
+                <div *ngIf = "user['mobile'].invalid && user['mobile'].touched">
+                    <div *ngIf = "user['mobile'].errors && user['mobile'].errors['required']" class="text-danger">
+                        Mobile number is required
+                    </div>
+                    <div *ngIf = "user['mobile'].errors && user['mobile'].errors['pattern']" class="text-danger">
+                        Mobile number must be 10 digit 
+                    </div>
+                </div>
+            </div> 
+            <div class="col-md-8 mt-4">
+                <div class="form-group">
+                    <label for="description">ROLE</label>
+                    <select class="form-control"  formControlName="role" [class.is-invalid] = "user['role'].invalid && user['role'].touched">
+                        <option value="" selected>Select One</option>
+                        <option value="admin">ADMIN</option>
+                        <option value="user">USER</option>
+                    </select>
+                </div>
+                <div *ngIf = "user['role'].invalid && user['role'].touched">
+                    <div *ngIf = "user['role'].errors && user['role'].errors['required']" class="text-danger">
+                        Role is required
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="col-lg-12 mt-4 d-flex">
+            <div class="p-3">
+                <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+            <div class="p-3">
+                <a routerLink="/login">already registered User</a>
+            </div> 
+        </div>
+    </form>
+</div>
+

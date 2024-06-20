@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <form [formGroup] = "addTask" (ngSubmit) = "onSubmit()">
+        <div>
+            <h1>TASK</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mt-5">
+                <div class="form-group">
+                    <label for="title">TITLE</label>
+                    <input type="text" class="form-control" formControlName = "title" [class.is-invalid] = "task['title'].invalid && task['title'].touched">
+                </div>
+                <div *ngIf = "task['title'].invalid && task['title'].touched">
+                    <div *ngIf = "task['title'].errors && task['title'].errors['required']" class="text-danger">
+                        Title is required
+                    </div>
+                    <div *ngIf = "task['title'].errors && task['title'].errors['pattern']" class="text-danger">
+                        Title can only be characters
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mt-4">
+                <div class="form-group">
+                    <label for="description">DESCRIPTION</label>
+                    <input type="text" class="form-control" formControlName = "description" [class.is-invalid] = "task['description'].invalid && task['description'].touched">
+                </div>
+                <div *ngIf = "task['description'].invalid && task['description'].touched">
+                    <div *ngIf = "task['description'].errors && task['description'].errors['required']" class="text-danger">
+                        Description is required
+                    </div>
+                    <div *ngIf = "task['description'].errors && task['description'].errors['pattern']" class="text-danger">
+                        Description must be 15 characters and also contain space 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mt-4">
+                <div class="form-group">
+                    <label for="description">STATUS</label>
+                    <select class="form-control"  formControlName="status" [class.is-invalid] = "task['status'].invalid && task['status'].touched">
+                        <option value="" selected>Select One</option>
+                        <option value="complete">COMPLETE</option>
+                        <option value="pending">PENDING</option>
+                    </select>
+                </div>
+                <div *ngIf = "task['status'].invalid && task['status'].touched">
+                    <div *ngIf = "task['status'].errors && task['status'].errors['required']" class="text-danger">
+                        Status is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 mt-5">
+                <button type="submit" class="btn btn-primary">ADD</button>
+            </div>
+        </div>
+    </form>
+</div>
